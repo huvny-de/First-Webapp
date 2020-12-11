@@ -5,7 +5,7 @@ using System.Text;
 
 namespace First.Data.Entities
 {
-    class Category
+    public class Category
     {
         public int Id { set; get; }
         public int SortOrder { set; get; }
