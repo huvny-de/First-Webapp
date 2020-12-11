@@ -4,7 +4,7 @@ using System.Text;
 
 namespace First.Data.Entities.Enums
 {
-    class enum Status
+    public enum Status
     {
         InActive,
         Active
