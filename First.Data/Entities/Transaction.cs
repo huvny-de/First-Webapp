@@ -1,9 +1,9 @@
-﻿using eShopSolution.Data.Enums;
+﻿using First.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace eShopSolution.Data.Entities
+namespace First.Data.Entities
 {
     public class Transaction
     {

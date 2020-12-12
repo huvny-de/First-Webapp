@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace eShopSolution.Data.Enums
+namespace First.Data.Enums
 {
     public enum OrderStatus
     {
