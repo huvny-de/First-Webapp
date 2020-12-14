@@ -9,13 +9,13 @@ namespace First.Data.EF
 {
     public class FirstDbContext : DbContext
     {
-        public FirstDbContext( DbContextOptions options) : base(options)
+        public FirstDbContext(DbContextOptions options) : base(options)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
-           // base.OnModelCreating(modelBuilder);
+            // base.OnModelCreating(modelBuilder);
         }
         public DbSet<Product> Products { set; get; }
         public DbSet<Category> Categories { set; get; }

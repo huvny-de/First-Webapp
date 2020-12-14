@@ -16,7 +16,8 @@ namespace First.Data.Entities
 
         public Category Category { get; set; }
 
-        public Language Language { get; set; }
+        public Language Language
+        { get; set; }
 
     }
 }
