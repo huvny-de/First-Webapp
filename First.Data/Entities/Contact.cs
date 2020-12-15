@@ -1,4 +1,5 @@
-﻿using First.Data.Enums;
+﻿using First.Data.Entities.Enums;
+using First.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
