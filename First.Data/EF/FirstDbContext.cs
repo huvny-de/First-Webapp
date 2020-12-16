@@ -1,5 +1,6 @@
 ﻿using First.Data.Configurations;
 using First.Data.Entities;
+using First.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace First.Data.EF
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //configure using Fluent API
             modelBuilder.ApplyConfiguration(new CartConfiguration());
 
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
@@ -30,10 +32,13 @@ namespace First.Data.EF
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
 
-           //modelBuilder.ApplyConfiguration(new AppUserConfiguration());
+            //modelBuilder.ApplyConfiguration(new AppUserConfiguration());
             //modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
             //modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
             //modelBuilder.ApplyConfiguration(new SlideConfiguration());
+
+            //Data seeding
+            modelBuilder.Seed();
             // base.OnModelCreating(modelBuilder);
         }
         public DbSet<Product> Products { set; get; }
