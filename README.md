@@ -1,5 +1,5 @@
 # First Webapp project by Henry
 ## Technologies
-- ASP.NET core 3.1
-- Entity Framework Core 3.1
+- ASP.NET core
+- Entity Framework Core
 ## Yeah
