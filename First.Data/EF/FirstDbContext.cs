@@ -1,5 +1,6 @@
 ﻿using First.Data.Configurations;
 using First.Data.Entities;
+using First.Data.Extensions;
 using Microsoft.AspNetCore.Identity;
 //using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

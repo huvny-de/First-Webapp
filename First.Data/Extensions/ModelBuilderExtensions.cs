@@ -1,9 +1,11 @@
 ﻿using First.Data.Entities;
 using First.Data.Entities.Enums;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+//??
 
 namespace First.Data.Extensions
 {
@@ -121,6 +123,37 @@ namespace First.Data.Extensions
             modelBuilder.Entity<ProductInCategory>().HasData(
                 new ProductInCategory() { ProductId = 1, CategoryId = 1 }
                 );
+            var roleId = new Guid("A517C144-1464-46AE-8441-F28CFFC8BC26");
+            var adminId = new Guid("BFBF9F2C-C530-4F13-91BB-826B2B451787");
+            modelBuilder.Entity<AppRole>().HasData(new AppRole
+            {
+                Id = roleId,
+                Name = "admin",
+                NormalizedName = "admin",
+                Description = "Administrator role"
+            });
+
+            var hasher = new PasswordHasher<AppUser>();
+            modelBuilder.Entity<AppUser>().HasData(new AppUser
+            {
+                Id = adminId,
+                UserName = "admin",
+                NormalizedUserName = "admin",
+                Email = "henri.deaaron@gmail.com",
+                NormalizedEmail = "henri.deaaron@gmail.com",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "Abcd1234$"),
+                SecurityStamp = string.Empty,
+                FirstName = "Huy",
+                LastName = "Vo",
+                Dob = new DateTime(2020, 12, 25)
+            }); ;
+
+            modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
+            {
+                RoleId = roleId,
+                UserId = adminId
+            });
         }
     }
 }
