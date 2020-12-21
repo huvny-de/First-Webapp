@@ -4,14 +4,16 @@ using First.Data.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace First.Data.Migrations
 {
     [DbContext(typeof(FirstDbContext))]
-    partial class FirstDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201221003345_aspnetIdentiyDatabase")]
+    partial class aspnetIdentiyDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,23 +33,6 @@ namespace First.Data.Migrations
                     b.HasKey("Key");
 
                     b.ToTable("AppConfigs");
-
-                    b.HasData(
-                        new
-                        {
-                            Key = "HomeTitle",
-                            Value = "This is home page of FirstWebApp"
-                        },
-                        new
-                        {
-                            Key = "HomeKeyword",
-                            Value = "This is keyword of FirstWebApp"
-                        },
-                        new
-                        {
-                            Key = "HomeDescription",
-                            Value = "This is  description of FirstWebApp"
-                        });
                 });
 
             modelBuilder.Entity("First.Data.Entities.AppRole", b =>
@@ -196,22 +181,6 @@ namespace First.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IsShowOnHome = true,
-                            SortOrder = 1,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IsShowOnHome = true,
-                            SortOrder = 2,
-                            Status = 1
-                        });
                 });
 
             modelBuilder.Entity("First.Data.Entities.CategoryTranslation", b =>
@@ -255,48 +224,6 @@ namespace First.Data.Migrations
                     b.HasIndex("LanguageId");
 
                     b.ToTable("CategoryTranslations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            LanguageId = "vi-VN",
-                            Name = "Áo nam",
-                            SeoAlias = "ao-nam",
-                            SeoDescription = "Sản phẩm áo thời trang nam",
-                            SeoTitle = "Sản phẩm áo thời trang nam"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 1,
-                            LanguageId = "en-US",
-                            Name = "Men Shirt",
-                            SeoAlias = "men-shirt",
-                            SeoDescription = "The shirt for men",
-                            SeoTitle = "The shirt for men"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 2,
-                            LanguageId = "vi-VN",
-                            Name = "Áo nữ",
-                            SeoAlias = "ao-nu",
-                            SeoDescription = "Sản phẩm áo thời trang nữ",
-                            SeoTitle = "Sản phẩm áo thời trang nữ"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 2,
-                            LanguageId = "en-US",
-                            Name = "women Shirt",
-                            SeoAlias = "women-shirt",
-                            SeoDescription = "The shirt for women",
-                            SeoTitle = "The shirt for women"
-                        });
                 });
 
             modelBuilder.Entity("First.Data.Entities.Contact", b =>
@@ -351,20 +278,6 @@ namespace First.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Languages");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "vi-VN",
-                            IsDefault = true,
-                            Name = "Tiếng Việt"
-                        },
-                        new
-                        {
-                            Id = "en-US",
-                            IsDefault = false,
-                            Name = "English"
-                        });
                 });
 
             modelBuilder.Entity("First.Data.Entities.Order", b =>
@@ -464,17 +377,6 @@ namespace First.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DataCreated = new DateTime(2020, 12, 16, 8, 11, 6, 811, DateTimeKind.Local).AddTicks(6304),
-                            OriginalPrice = 100000m,
-                            Price = 200000m,
-                            Stock = 0,
-                            ViewCount = 0
-                        });
                 });
 
             modelBuilder.Entity("First.Data.Entities.ProductImage", b =>
@@ -525,13 +427,6 @@ namespace First.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductInCategories");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = 1,
-                            ProductId = 1
-                        });
                 });
 
             modelBuilder.Entity("First.Data.Entities.ProductTranslation", b =>
@@ -580,32 +475,6 @@ namespace First.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductTranslations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Áo sơ mi nam trắng Việt Tiến",
-                            Details = "Áo sơ mi nam trắng Việt Tiến",
-                            LanguageId = "vi-VN",
-                            Name = "Áo sơ mi nam trắng Việt Tiến",
-                            ProductId = 1,
-                            SeoAlias = "ao-so-mi-nam-trang-viet-tien",
-                            SeoDescription = "Áo sơ mi nam trắng Việt Tiến",
-                            SeoTitle = "Áo sơ mi nam trắng Việt Tiến"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Viet Tien Men T-Shirt",
-                            Details = "Viet Tien Men T-Shirt",
-                            LanguageId = "en-US",
-                            Name = "Viet Tien Men T-Shirt",
-                            ProductId = 1,
-                            SeoAlias = "viet-tien-men-t-shirt",
-                            SeoDescription = "Viet Tien Men T-Shirt",
-                            SeoTitle = "Viet Tien Men T-Shirt"
-                        });
                 });
 
             modelBuilder.Entity("First.Data.Entities.Promotion", b =>
