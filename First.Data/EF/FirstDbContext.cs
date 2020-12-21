@@ -1,5 +1,8 @@
 ﻿using First.Data.Configurations;
 using First.Data.Entities;
+using Microsoft.AspNetCore.Identity;
+//using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,13 +10,14 @@ using System.Text;
 
 namespace First.Data.EF
 {
-    public class FirstDbContext : DbContext
+    public class FirstDbContext : IdentityDbContext<AppUser,AppRole,Guid>
     {
         public FirstDbContext(DbContextOptions options) : base(options)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //configure using Fluent API
             modelBuilder.ApplyConfiguration(new CartConfiguration());
 
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
@@ -30,10 +34,22 @@ namespace First.Data.EF
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
 
-           //modelBuilder.ApplyConfiguration(new AppUserConfiguration());
-            //modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
+            modelBuilder.ApplyConfiguration(new AppUserConfiguration());
+            modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
+
+            modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x=>new { x.UserId, x.RoleId });
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x=>x.UserId);
+
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x=>x.UserId);
+
+
             //modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
             //modelBuilder.ApplyConfiguration(new SlideConfiguration());
+
+            //Data seeding
+            modelBuilder.Seed();
             // base.OnModelCreating(modelBuilder);
         }
         public DbSet<Product> Products { set; get; }
