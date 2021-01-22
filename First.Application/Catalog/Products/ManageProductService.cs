@@ -43,7 +43,7 @@ namespace First.Application.Catalog.Products
             throw new NotImplementedException();
         }
 
-        public async Task<int> Update(ProductEditRequest request)0000000000
+        public async Task<int> Update(ProductEditRequest request)
         {
             throw new NotImplementedException();
         }
