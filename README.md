@@ -3,4 +3,5 @@
 - ASP.NET core
 - Entity Framework Core
 - SQL Server
-
+- Restful api
+- Swagger
